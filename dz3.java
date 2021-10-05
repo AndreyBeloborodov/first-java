@@ -1,25 +1,33 @@
 import java.util.Scanner;
 
 public class dz3 {
+
+    static boolean simple_number(int a) {
+        for(int i = 2; i * i <= a; i++) if(a % i == 0) return false;
+        return true;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        int c = sc.nextInt();
+        int n = sc.nextInt();
 
-        boolean ok = true;
+        if(simple_number(n)) {
+            System.out.print("Prime");
+            return;
+        }
 
-        ok &= (a + b > c);
-        ok &= (a + c > b);
-        ok &= (b + c > a);
+        System.out.print(1);
 
-        String answer;
+        int cur = 2;
 
-        if(ok) answer = "Yes";
-        else answer = "No";
-
-        System.out.print(answer);
+        while(n > 1) {
+            while(n % cur != 0 || !simple_number(cur)) cur++;
+            while(n % cur == 0) {
+                System.out.print(" * " + cur);
+                n /= cur;
+            }
+        }
 
         sc.close();
     }

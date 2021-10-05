@@ -1,21 +1,19 @@
-import java.io.IOException;
+import java.util.Scanner;
 
 public class dz2 {
-    public static void main(String[] args) throws IOException {
 
-        char[] abc = {
-            'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
-               'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
-                  'z', 'x', 'c', 'v', 'b', 'n', 'm'
-        };
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        char letter = (char) System.in.read();
+        int k = sc.nextInt(), m = sc.nextInt();
 
-        for(int i = 0; i < 26; i++) {
-            if(abc[i] == letter) {
-                System.out.print(abc[(i + 1) % 26]);
-            }
+        while(k % 3 != 0)k++;
+        while(m % 3 != 0)m--;
+        while(k <= m) {
+            System.out.print(k + " ");
+            k += 3;
         }
 
+        sc.close();
     }
 }
